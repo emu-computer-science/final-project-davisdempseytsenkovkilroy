@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 914250753701676657}
   - component: {fileID: 914250753701676656}
-  - component: {fileID: 914250753701676659}
   - component: {fileID: 914250753701676658}
   - component: {fileID: 914250753701676661}
+  - component: {fileID: 914250753701676659}
+  - component: {fileID: 5046495764840446618}
   m_Layer: 0
   m_Name: Beaver
   m_TagString: Beaver
@@ -83,20 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &914250753701676659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914250753701676660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c3ff7cff3f959e48af0997f736e44ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7.5
-  rb: {fileID: 914250753701676661}
 --- !u!61 &914250753701676658
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,3 +131,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &914250753701676659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914250753701676660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3ff7cff3f959e48af0997f736e44ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+--- !u!114 &5046495764840446618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914250753701676660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4bb655d5af65f547b0e2cfb7398f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
