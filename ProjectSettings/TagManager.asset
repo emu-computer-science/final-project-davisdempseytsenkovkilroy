@@ -7,6 +7,7 @@ TagManager:
   - GasCan
   - Beaver
   - PickUpText
+  - Enemy
   layers:
   - Default
   - TransparentFX

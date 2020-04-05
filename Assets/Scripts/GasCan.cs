@@ -8,6 +8,8 @@ public class GasCan : MonoBehaviour
     [SerializeField] private Text pickUpText;
     Beaver player;
 
+    public static bool isHeld = false;
+
     private bool pickUpAllowed;
     Canvas mCanvas;
 
@@ -52,5 +54,11 @@ public class GasCan : MonoBehaviour
     private void PickUp()
     {
         Destroy(this.gameObject);
+        isHeld = true;
+    }
+
+    public static bool IsHeld()
+    {
+        return isHeld;
     }
 }
