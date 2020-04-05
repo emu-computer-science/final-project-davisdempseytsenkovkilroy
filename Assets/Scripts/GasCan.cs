@@ -9,11 +9,17 @@ public class GasCan : MonoBehaviour
     Beaver player;
 
     private bool pickUpAllowed;
+    Canvas mCanvas;
+
+    private void Awake()
+    {
+        pickUpText = GameObject.Find("Canvas/PickUpText").GetComponent<Text>();
+    }
 
     private void Start()
     {
         pickUpText.gameObject.SetActive(false);
-        player = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Beaver>();
+        //player = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Beaver>();
     }
 
     private void Update()

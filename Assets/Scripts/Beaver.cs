@@ -10,6 +10,11 @@ public class Beaver : MonoBehaviour
 
     public void Update()
     {
+        /*if (Input.GetKeyDown(KeyCode.F))
+        {
+            inventory.AddItem(item);
+            item.OnPickUp();
+        }*/
         Move();
     }
 
@@ -23,12 +28,6 @@ public class Beaver : MonoBehaviour
 
         transform.position = new Vector2(newXpos, newYpos);
     }
-    /*
-     if (Input.GetKey("w"))
-        {
-            pos.y += speed* Time.deltaTime;
-            }
-            */
 
 private void OnCollisionEnter2D(Collision2D collision)
     {
