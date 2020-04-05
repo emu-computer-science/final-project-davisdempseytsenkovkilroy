@@ -18,11 +18,10 @@ public class SpawnItems : MonoBehaviour
     {
         while (itemCount < 10)
         {
-            xPos = Random.Range(-9, 9);
-            yPos = Random.Range(-4, 4);
+            xPos = Random.Range(-5, 5);
+            yPos = Random.Range(-5, 5);
             Instantiate(item, new Vector2(xPos, yPos), Quaternion.identity);
             itemCount += 1;
-
         }
     }
 }

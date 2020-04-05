@@ -9,6 +9,7 @@ public class GasCan : MonoBehaviour
     Beaver player;
 
     private bool pickUpAllowed;
+    Canvas mCanvas;
 
     private void Start()
     {
