@@ -18,8 +18,20 @@ public class FollowCam : MonoBehaviour
 
         Vector3 cameraMoveDirection = (cameraFollowPosition - transform.position).normalized;       //Smoothing the camera
         float distance = Vector3.Distance(cameraFollowPosition, transform.position);
-        float cameraMoveSpeed = 1f;
+        float cameraMoveSpeed = 2f;
 
-        transform.position = transform.position + cameraMoveDirection * distance * cameraMoveSpeed * Time.deltaTime;
+        if(distance > 0)
+        {
+            Vector3 newCameraPosition = transform.position + cameraMoveDirection * distance * cameraMoveSpeed * Time.deltaTime;
+
+            float distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
+
+            if(distanceAfterMoving > distance)
+            {
+                //Overshot target
+                newCameraPosition = cameraFollowPosition;
+            }
+            transform.position = newCameraPosition;
+        }
     }
 }
