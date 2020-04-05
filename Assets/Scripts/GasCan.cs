@@ -13,7 +13,7 @@ public class GasCan : MonoBehaviour
 
     private void Awake()
     {
-        pickUpText = GameObject.Find("Canvas/PickUpText").GetComponent<Text>();
+        pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
     }
 
     private void Start()
