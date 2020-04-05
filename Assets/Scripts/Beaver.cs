@@ -40,6 +40,7 @@ public class Beaver : MonoBehaviour
 
     private Vector2 moveVelocity;
 
+
     public void Update()
     {
         /*
@@ -59,13 +60,14 @@ public class Beaver : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "GasCan")
         {
-
+            
         }
     }
 }

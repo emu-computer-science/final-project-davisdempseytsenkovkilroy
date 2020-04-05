@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GasCan : MonoBehaviour
 {
-    [SerializeField] private Text pickUpText;
+    [SerializeField]
+    private Text pickUpText;
 
     private bool pickUpAllowed;
+    
 
     private void Start()
     {
@@ -19,7 +22,9 @@ public class GasCan : MonoBehaviour
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.F))
         {
             PickUp();
+
         }
+     
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,5 +49,10 @@ public class GasCan : MonoBehaviour
     private void PickUp()
     {
         Destroy(gameObject);
+
+
+
     }
+
+
 }

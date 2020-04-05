@@ -39,7 +39,7 @@ public class EnemyFollowPath : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, pointInThePath.Current.position, Time.deltaTime * moveSpeed);
         }
 
-        float dSquared = (transform.position - pointInThePath.Current.position).sqrMagnitude;
+        var dSquared = (transform.position - pointInThePath.Current.position).sqrMagnitude;
         if (dSquared < maxDistanceFromPoint * maxDistanceFromPoint)
         {
             pointInThePath.MoveNext();
