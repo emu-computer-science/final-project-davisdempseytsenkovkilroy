@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class GasCan : MonoBehaviour
 {
     [SerializeField] private Text pickUpText;
+    Beaver player;
 
     private bool pickUpAllowed;
 
     private void Start()
     {
         pickUpText.gameObject.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Beaver>();
     }
 
     private void Update()
@@ -43,6 +45,6 @@ public class GasCan : MonoBehaviour
 
     private void PickUp()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

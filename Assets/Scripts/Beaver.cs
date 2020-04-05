@@ -3,69 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Beaver : MonoBehaviour
-{
-    /*
-    public float speed = 1f;
-
-    void Update()
-    {
-        Movement();
-    }
-
-    private void Movement()
-    {
-        Vector3 pos = transform.position;
-
-        if (Input.GetKey("w"))
-        {
-            pos.y += speed * Time.deltaTime;
-        }
-        if (Input.GetKey("s"))
-        {
-            pos.y -= speed * Time.deltaTime;
-        }
-        if (Input.GetKey("d"))
-        {
-            pos.x += speed * Time.deltaTime;
-        }
-        if (Input.GetKey("a"))
-        {
-            pos.x -= speed * Time.deltaTime;
-        }
-        transform.position = pos;
-    }
-    */
-    [SerializeField] float speed = 10;
-    public Rigidbody2D rb;
-
-    private Vector2 moveVelocity;
+{ 
+    [SerializeField] float moveSpeed = 10f;
+    private Rigidbody2D rb;
+    private bool carrying;
 
     public void Update()
     {
-        /*
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        Vector3 tempVect = new Vector3(h, v, 0);
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
-        rb.MovePosition(rb.transform.position + tempVect);
-        rb.AddForce(rb.transform.position + tempVect);
-        */
-
-        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxis("Vertical"));
-        moveVelocity = moveInput * speed;
+        Move();
     }
 
-    private void FixedUpdate()
+    private void Move()
     {
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-    }
+        float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        float newXpos = transform.position.x + deltaX;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+        float deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+        float newYpos = transform.position.y + deltaY;
+
+        transform.position = new Vector2(newXpos, newYpos);
+    }
+    /*
+     if (Input.GetKey("w"))
+        {
+            pos.y += speed* Time.deltaTime;
+            }
+            */
+
+private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "GasCan")
         {
-
+            
         }
     }
 }
