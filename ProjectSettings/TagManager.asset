@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GasCan
   - Beaver
+  - PickUpText
   layers:
   - Default
   - TransparentFX
