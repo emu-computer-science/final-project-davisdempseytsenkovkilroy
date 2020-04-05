@@ -5,6 +5,9 @@ using UnityEngine;
 public class SpawnItems : MonoBehaviour
 {
     //public GameObject item;
+    [Header("Set in Inpsector")]
+    public Vector2 itemPosMin = new Vector2(-50, -5); 
+    public Vector2 itemPosMax = new Vector2(150, 100);
     private int xPos;
     private int yPos;
     private int itemCount = 0;
@@ -26,8 +29,8 @@ public class SpawnItems : MonoBehaviour
         {
             item = Instantiate<GameObject>(GasCanPrefab);
             Vector2 itemPos = Vector2.zero;
-            itemPos.x = Random.Range(0, 10);
-            itemPos.y = Random.Range(-5, 10);
+            itemPos.x = Random.Range(itemPosMin.x, itemPosMax.x);
+            itemPos.y = Random.Range(itemPosMin.y, itemPosMax.y);
             item.transform.position = itemPos;
             //Instantiate(item, new Vector2(xPos, yPos), Quaternion.identity);
             item.transform.SetParent(anchor.transform);
