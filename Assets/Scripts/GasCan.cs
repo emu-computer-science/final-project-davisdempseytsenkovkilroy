@@ -9,8 +9,10 @@ public class GasCan : MonoBehaviour
     Beaver player;
 
     public static bool isHeld = false;
+    public GameObject gasCanPrefab;
 
     private bool pickUpAllowed;
+    private Transform beaver;
     Canvas mCanvas;
 
     private void Awake()
@@ -21,6 +23,7 @@ public class GasCan : MonoBehaviour
     private void Start()
     {
         pickUpText.gameObject.SetActive(false);
+        beaver = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Transform>();
         //player = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Beaver>();
     }
 
@@ -29,6 +32,11 @@ public class GasCan : MonoBehaviour
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.F))
         {
             PickUp();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Invoke("Drop" , 0.1f);
         }
     }
 
@@ -57,6 +65,15 @@ public class GasCan : MonoBehaviour
         isHeld = true;
     }
 
+    public void Drop()
+    {
+        if (isHeld == true)
+        {
+            GameObject gasCan = Instantiate<GameObject>(gasCanPrefab);
+            gasCan.transform.position = beaver.position;
+            isHeld = false;
+        }
+    }
     public static bool IsHeld()
     {
         return isHeld;

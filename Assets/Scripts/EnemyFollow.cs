@@ -6,6 +6,7 @@ public class EnemyFollow : MonoBehaviour
 {
 
     public float speed;
+    public float enemyStop;
 
     private Transform target;
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class EnemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) > 3.5 && GasCan.IsHeld()) {
+        if (Vector2.Distance(transform.position, target.position) > enemyStop && GasCan.IsHeld()) {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             }
     }

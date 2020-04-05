@@ -8,6 +8,7 @@ TagManager:
   - Beaver
   - PickUpText
   - Enemy
+  - DropZone
   layers:
   - Default
   - TransparentFX
