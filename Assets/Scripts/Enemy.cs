@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
             player = collision.gameObject.GetComponent<Beaver>();
             Debug.Log("Collision with player.");
             player.TakeDamage(damage);
+			HeartBar.TakeDamage(damage);
         }
     }
 }
