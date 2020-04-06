@@ -18,6 +18,7 @@ public class GasCan : MonoBehaviour
     private void Awake()
     {
         pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
+        gasCanPrefab = GameObject.FindGameObjectWithTag("GasCan");
     }
 
     private void Start()
@@ -69,9 +70,13 @@ public class GasCan : MonoBehaviour
     {
         if (isHeld == true)
         {
-            GameObject gasCan = Instantiate<GameObject>(gasCanPrefab);
-            gasCan.transform.position = beaver.position;
-            isHeld = false;
+            if (Beaver.IsInZone())
+            {
+                Scoreboard.score += 1;
+                GameObject gasCan = Instantiate<GameObject>(gasCanPrefab);
+                gasCan.transform.position = beaver.position;
+                isHeld = false;
+            }
         }
     }
     public static bool IsHeld()
