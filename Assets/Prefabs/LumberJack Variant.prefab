@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &763896766617803757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628149205153899261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc16a9ae826ed4c3eab0b4d47fe42111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  AIPath: {fileID: 0}
+  moveSpeed: 1
+  maxDistanceFromPoint: 0.1
 --- !u!1001 &6976510771130515889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 8523575243453997900, guid: 947100d2a786d254aa93e20125930ddc,
         type: 3}
       propertyPath: m_Name
-      value: LumberJack
+      value: LumberJack Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8523575243453997900, guid: 947100d2a786d254aa93e20125930ddc,
         type: 3}
@@ -92,3 +108,9 @@ PrefabInstance:
     - {fileID: 8523575243453997898, guid: 947100d2a786d254aa93e20125930ddc, type: 3}
     - {fileID: 8523575243453997901, guid: 947100d2a786d254aa93e20125930ddc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947100d2a786d254aa93e20125930ddc, type: 3}
+--- !u!1 &1628149205153899261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8523575243453997900, guid: 947100d2a786d254aa93e20125930ddc,
+    type: 3}
+  m_PrefabInstance: {fileID: 6976510771130515889}
+  m_PrefabAsset: {fileID: 0}

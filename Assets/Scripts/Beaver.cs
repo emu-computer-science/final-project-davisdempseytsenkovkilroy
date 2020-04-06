@@ -8,6 +8,8 @@ public class Beaver : MonoBehaviour
     private Rigidbody2D rb;
     private bool carrying;
 
+    public static bool inZone;
+
     public void Update()
     {
         /*if (Input.GetKeyDown(KeyCode.F))
@@ -34,6 +36,20 @@ private void OnCollisionEnter2D(Collision2D collision)
         if (collision.gameObject.tag == "DropZone")
         {
             Debug.Log("Beaver collided with DropZone.");
+            inZone = true;
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "DropZone")
+        {
+            Debug.Log("Beaver has left the DropZone");
+            inZone = false;
+        }
+    }
+    public static bool IsInZone()
+    {
+        return inZone;
     }
 }
