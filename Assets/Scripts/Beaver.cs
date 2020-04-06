@@ -5,6 +5,7 @@ using UnityEngine;
 public class Beaver : MonoBehaviour
 { 
     [SerializeField] float moveSpeed = 10f;
+    [SerializeField] int health = 10;
     private Rigidbody2D rb;
     private bool carrying;
 
@@ -15,7 +16,17 @@ public class Beaver : MonoBehaviour
             inventory.AddItem(item);
             item.OnPickUp();
         }*/
+
+        //CheckState();
+
         Move();
+        CheckDeath();
+    }
+
+    private void CheckDeath()
+    {
+        if (health <= 0)
+            Destroy(gameObject);
     }
 
     private void Move()
@@ -28,12 +39,17 @@ public class Beaver : MonoBehaviour
 
         transform.position = new Vector2(newXpos, newYpos);
     }
-
-private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "GasCan")
         {
             
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health = health - damage;
     }
 }
