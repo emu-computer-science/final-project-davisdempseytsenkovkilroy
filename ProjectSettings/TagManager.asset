@@ -12,6 +12,7 @@ TagManager:
   - GasCanNoText
   - DropText
   - DeathText
+  - Chainsaw
   layers:
   - Default
   - TransparentFX

@@ -8,17 +8,22 @@ public class Beaver : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] public static int health = 10;
     private Rigidbody2D rb;
-    private bool carrying;
 
     public static bool inZone;
+    public static bool isPickable;
 
     Text deathText;
+    Text pickUpText;
+
     private void Awake()
     {
         deathText = GameObject.Find("DeathText").GetComponent<Text>();
+        pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
     }
+
     void Start()
     {
+        pickUpText.gameObject.SetActive(false);
         deathText.gameObject.SetActive(false);
     }
 
@@ -34,6 +39,31 @@ public class Beaver : MonoBehaviour
 
         Move();
         CheckDeath();
+        CheckWin();
+        /*
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Drop();
+        }*/
+    }
+
+    /*
+    public void Drop()
+    {
+        if (inZone)
+        {
+            Scoreboard.score += 1;
+        }
+    }
+    */
+
+    private void CheckWin()
+    {
+        if (SpawnItems.goal == Scoreboard.score)
+        {
+            deathText.gameObject.SetActive(true);
+            deathText.text = "You have won.";
+        }
     }
 
     public static int Health
@@ -75,6 +105,31 @@ public class Beaver : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "GasCan")
+        {
+            Debug.Log("Beaver collided with GasCan.");
+            pickUpText.gameObject.SetActive(true);
+            pickUpText.text = "Press 'F' to pick Gas Can";
+        }
+
+        else if (collision.gameObject.tag == "Chainsaw")
+        {
+            Debug.Log("Beaver collided with Chainsaw.");
+            pickUpText.gameObject.SetActive(true);
+            pickUpText.text = "Press 'F' to pick Chainsaw";
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "GasCan" || collision.gameObject.tag == "Chainsaw")
+        {
+            pickUpText.gameObject.SetActive(false);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         health = health - damage;
@@ -86,6 +141,10 @@ public class Beaver : MonoBehaviour
         {
             Debug.Log("Beaver has left the DropZone");
             inZone = false;
+        }
+        if(collision.gameObject.tag == "GasCan" || collision.gameObject.tag == "Chainsaw")
+        {
+            pickUpText.gameObject.SetActive(false);
         }
     }
     public static bool IsInZone()

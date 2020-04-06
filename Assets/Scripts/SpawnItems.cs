@@ -12,11 +12,13 @@ public class SpawnItems : MonoBehaviour
     private int yPos;
     private int itemCount = 0;
     public int numItems;
+    public static int goal;
     public GameObject GasCanPrefab;
 
     private void Start()
     {
-        Spawn();    
+        Spawn();
+        goal = numItems;
     }
 
     void Spawn()

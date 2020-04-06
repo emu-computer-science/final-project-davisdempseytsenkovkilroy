@@ -18,7 +18,7 @@ public class GasCan : MonoBehaviour
 
     private void Awake()
     {
-        pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
+        //pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
         gasCanPrefab = GameObject.FindGameObjectWithTag("GasCanNoText");
     }
 
@@ -49,6 +49,7 @@ public class GasCan : MonoBehaviour
         {
             Debug.Log("Collision with beaver detected.");
             pickUpText.gameObject.SetActive(true);
+            pickUpText.text = "Press 'F' to pick Gas Can";
             pickUpAllowed = true;
         }
     }
