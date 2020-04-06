@@ -9,6 +9,9 @@ TagManager:
   - PickUpText
   - Enemy
   - DropZone
+  - GasCanNoText
+  - DropText
+  - DeathText
   layers:
   - Default
   - TransparentFX

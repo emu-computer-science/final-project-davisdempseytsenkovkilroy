@@ -15,6 +15,6 @@ public class Scoreboard : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = "Score : " + score;    
+        scoreText.text = "Score: " + score;    
     }
 }

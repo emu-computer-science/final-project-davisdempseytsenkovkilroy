@@ -1,15 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Beaver : MonoBehaviour
 { 
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] int health = 10;
+    [SerializeField] public static int health = 10;
     private Rigidbody2D rb;
     private bool carrying;
 
     public static bool inZone;
+
+    Text deathText;
+    private void Awake()
+    {
+        deathText = GameObject.Find("DeathText").GetComponent<Text>();
+    }
+    void Start()
+    {
+        deathText.gameObject.SetActive(false);
+    }
 
     public void Update()
     {
@@ -25,10 +36,23 @@ public class Beaver : MonoBehaviour
         CheckDeath();
     }
 
+    public static int Health
+    {
+        get
+        {
+            return health;
+        }
+    }
+
     private void CheckDeath()
     {
         if (health <= 0)
-            Destroy(gameObject);
+        {
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
+            deathText.gameObject.SetActive(true);
+            //deathText.text = "You have died.";
+        }
     }
 
     private void Move()
