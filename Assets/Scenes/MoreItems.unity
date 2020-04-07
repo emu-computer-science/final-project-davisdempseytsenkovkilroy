@@ -446,9 +446,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPosMin: {x: 0, y: -10}
   itemPosMax: {x: 20, y: 10}
-  numItems: 5
+  numItems: 10
   GasCanPrefab: {fileID: 2930631039556030807, guid: 27cadbab8a1e22b418caec2f64e41653,
     type: 3}
+  itemCheckRadius: 5
 --- !u!4 &934746430
 Transform:
   m_ObjectHideFlags: 0
