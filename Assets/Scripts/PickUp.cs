@@ -8,21 +8,20 @@ public class PickUp : MonoBehaviour
     private Inventory inventory;
     public GameObject itemButton;
 
-    public static bool isPickable;
+    public bool isPickable;
 
     private void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Inventory>();
+        isPickable = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Beaver"))
+        if (collision.CompareTag("Beaver") && isPickable == false && Beaver.isCarrying == false)
         {
-            if(inventory.slots[inventory.slots.Length-1].gameObject != null)
-            {
-                Beaver.isPickable = true;
-            }
+            //Debug.Log("PickUp available."+this.gameObject.name);
+            isPickable = true;
         }
     }
 
@@ -30,16 +29,14 @@ public class PickUp : MonoBehaviour
     {
         if (collision.CompareTag("Beaver"))
         {
-            if (inventory.slots[inventory.slots.Length-1] != null)
-            {
-                Beaver.isPickable = false;
-            }
+           // Debug.Log("PickUp unavailable."+this.gameObject.name);
+                isPickable = false;
         }
     }
 
     private void Update()
     {
-        if(Beaver.isPickable && Input.GetKeyDown(KeyCode.F))
+        if(isPickable && Input.GetKeyDown(KeyCode.F))
         {
             AddItem();
         }
@@ -47,6 +44,7 @@ public class PickUp : MonoBehaviour
 
     private void AddItem()
     {
+        //Debug.Log("Adding game object: "+this.gameObject.name);
         for (int i = 0; i < inventory.slots.Length; i++)
         {
             if (inventory.isFull[i] == false)
@@ -54,7 +52,8 @@ public class PickUp : MonoBehaviour
                 inventory.isFull[i] = true;
                 Instantiate(itemButton, inventory.slots[i].transform, false);
                 Destroy(gameObject);
-                Beaver.isPickable = false;
+                isPickable = false;
+                Beaver.isCarrying = true;
                 break;
             }
         }

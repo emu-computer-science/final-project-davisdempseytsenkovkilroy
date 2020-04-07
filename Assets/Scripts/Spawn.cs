@@ -11,9 +11,11 @@ public class Spawn : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Beaver").transform;
     }
+
     public void SpawnDroppedItem()
     {
         Vector2 playerPos = new Vector2(player.position.x, player.position.y-5);
         Instantiate(item, playerPos, Quaternion.identity);
+        Beaver.isCarrying = false;
     }
 }

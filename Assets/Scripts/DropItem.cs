@@ -9,72 +9,99 @@ public class DropItem : MonoBehaviour
 
     private bool dropAllowed;
     private Transform beaver;
-    Canvas mCanvas;
-    public GameObject gasCanPrefabNoText;
+
+    private Slot slot;
 
     private void Awake()
     {
         dropText = GameObject.Find("DropText").GetComponent<Text>();
-        gasCanPrefabNoText = GameObject.FindGameObjectWithTag("GasCanNoText");
     }
 
     private void Start()
     {
         dropText.gameObject.SetActive(false);
-        beaver = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Transform>();
-        //player = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Beaver>();
     }
-
-    /*
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R) && dropAllowed && Beaver.isCarrying)
         {
-            Drop();
-        }
-    }*/
+            //Drop();
+        }*/
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Beaver")
         {
-            Debug.Log("Collision with beaver detected.");
-            if (GasCan.isHeld)
+            Debug.Log("Dam detected collision with beaver.");
+            if (Beaver.isCarrying)
             {
                 dropText.gameObject.SetActive(true);
+                dropText.text = "Press X to drop item";
                 dropAllowed = true;
             }
         }
-    }
+        /*
+        if (collision.gameObject.tag == "Chainsaw" || collision.gameObject.tag == "GasCan")
+        {
+            Debug.Log("Collision with " + collision.gameObject.name);
+            Scoreboard.score += 1;
+            collision.gameObject.SetActive(false);
+            //collision.gameObject
+            float timer = 0;
+            timer = timer + Time.deltaTime;
+            if (timer == 2)
+            {
+                Destroy(collision.gameObject);
+            }
 
+        }*/
+
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Beaver")
         {
+            Debug.Log("Beaver left Dam.");
             dropText.gameObject.SetActive(false);
             dropAllowed = false;
         }
     }
 
-    /*
-    public void Drop()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (dropAllowed && GasCan.IsHeld())
+        Debug.Log("Collision with " + collision.gameObject.name);
+        if (collision.gameObject.tag == "Chainsaw" || collision.gameObject.tag == "GasCan")
         {
-            if (Beaver.IsInZone())
-            {
-                Scoreboard.score += 1;
-                //GameObject gasCan = Instantiate<GameObject>(gasCanPrefabNoText);
-                GameObject anchor = GameObject.Find("DropZone");
-                //GameObject gasCan = Instantiate<GameObject>(gasCanPrefabNoText);
-                //GameObject gasCan = Instantiate(Resources.Load("gas can")) as GameObject;
-                //GameObject gasCan = Instantiate<GameObject>(gasCanPrefabNoText);
-                //gasCan.transform.position = beaver.position;
-                //gasCan.transform.SetParent(anchor.transform);
-               //dropAllowed = false;
-                //GasCan.isHeld = false;
-            }
+            Debug.Log("Collision with " + collision.gameObject.name);
+            StartCoroutine(waitAndDestroy(collision.gameObject, 0.1f));
+
         }
     }
-    */
+
+    /*
+    float timer = 0f;
+    timer = timer + Time.deltaTime;
+        if (timer > 2f)
+        {
+            Debug.Log("Time is: " + timer);
+            Destroy(item);
+        }
+        */
+    IEnumerator waitAndDestroy(GameObject item, float seconds)
+    {
+        Scoreboard.score += 1;
+        dropText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(seconds);
+        Destroy(item);
+        //Debug.Log("After Wait");
+    }
+
+/*
+ * float timer = 0;
+timer = timer + Time.deltaTime;
+if (timer > 5)
+   {
+
+   }*/
 }

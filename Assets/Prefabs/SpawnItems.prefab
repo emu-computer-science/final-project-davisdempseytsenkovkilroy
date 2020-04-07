@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169cb7168f196f140add5d41e7bc45ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 8168268664386332306, guid: 27cadbab8a1e22b418caec2f64e41653, type: 3}
-  xPos: 0
-  yPos: 0
-  itemCount: 0
+  itemPosMin: {x: -10, y: -10}
+  itemPosMax: {x: 10, y: 10}
+  numItems: 0
+  GasCanPrefab: {fileID: 0}

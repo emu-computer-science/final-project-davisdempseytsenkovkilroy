@@ -18,7 +18,6 @@ public class GasCan : MonoBehaviour
 
     private void Awake()
     {
-        //pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
         gasCanPrefab = GameObject.FindGameObjectWithTag("GasCanNoText");
     }
 
@@ -26,7 +25,6 @@ public class GasCan : MonoBehaviour
     {
         pickUpText.gameObject.SetActive(false);
         beaver = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Transform>();
-        //player = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Beaver>();
     }
 
     private void Update()
@@ -35,12 +33,6 @@ public class GasCan : MonoBehaviour
         {
             PickUp();
         } 
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Drop();
-            //Invoke("Drop", 0.1f);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
