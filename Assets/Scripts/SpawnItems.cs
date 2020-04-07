@@ -55,13 +55,13 @@ public class SpawnItems : MonoBehaviour
         {
             //item = Instantiate<GameObject>(itemPrefab);
             item = Instantiate<GameObject>(itemPrefab);
-            Vector2 itemPos = Vector2.zero;
+            Vector3 itemPos = Vector3.zero;
             itemPos.x = Random.Range(itemPosMin.x, itemPosMax.x);
             itemPos.y = Random.Range(itemPosMin.y, itemPosMax.y);
             foreach(GameObject o in items)
             {
                 int maxTries = 100;
-                Vector2 pos = o.transform.position;
+                Vector3 pos = o.transform.position;
                 while((itemPos - pos).magnitude < distanceBetweenItems)
                 {
                     itemPos.x = Random.Range(itemPosMin.x, itemPosMax.x);
