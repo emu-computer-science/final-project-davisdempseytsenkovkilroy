@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DisplayHealth : MonoBehaviour
 {
+
     public static int health;
     Text healthText;
 

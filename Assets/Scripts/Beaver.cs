@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Beaver : MonoBehaviour
 { 
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] public static int health = 10;
+    [SerializeField] public static int health = 5;
     private Rigidbody2D rb;
 
     public static bool inZone;
@@ -105,6 +105,7 @@ public class Beaver : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health = health - damage;
+		
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
