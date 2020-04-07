@@ -1208,8 +1208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropText: {fileID: 184856391}
-  gasCanPrefabNoText: {fileID: 2930631039556030807, guid: b63e5814ef3339443825df6a4407b05e,
-    type: 3}
 --- !u!1 &594832866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,7 +1455,7 @@ Transform:
   m_Children:
   - {fileID: 498508717}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &620153844
 GameObject:
@@ -1892,7 +1890,7 @@ Transform:
   m_LocalScale: {x: 500, y: 500, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &861798440
 GameObject:
@@ -2159,9 +2157,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPosMin: {x: -100, y: -125}
   itemPosMax: {x: 150, y: 100}
-  numItems: 5
+  distanceBetweenItems: 0
+  numGasCans: 0
   GasCanPrefab: {fileID: 2930631039556030807, guid: 27cadbab8a1e22b418caec2f64e41653,
     type: 3}
+  numRocks: 0
+  RockPrefab: {fileID: 0}
+  numChainsaws: 0
+  ChainsawPrefab: {fileID: 0}
 --- !u!4 &934746430
 Transform:
   m_ObjectHideFlags: 0
@@ -2174,7 +2177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &934746431
 MonoBehaviour:
@@ -2190,9 +2193,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPosMin: {x: -100, y: -125}
   itemPosMax: {x: 150, y: 125}
-  numItems: 50
+  distanceBetweenItems: 0
+  numGasCans: 0
   GasCanPrefab: {fileID: 3193053662347784523, guid: 83ac47625db8bb546a9e691ebcfe189c,
     type: 3}
+  numRocks: 0
+  RockPrefab: {fileID: 0}
+  numChainsaws: 0
+  ChainsawPrefab: {fileID: 0}
 --- !u!1001 &946683106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2861,7 +2869,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1144046954
 PrefabInstance:
@@ -3808,7 +3816,7 @@ RectTransform:
   - {fileID: 282988829}
   - {fileID: 946683107}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

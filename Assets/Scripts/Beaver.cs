@@ -7,6 +7,7 @@ public class Beaver : MonoBehaviour
 { 
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] public static int health = 5;
+    public int numOfHearts;
     private Rigidbody2D rb;
 
     public static bool inZone;
@@ -14,6 +15,11 @@ public class Beaver : MonoBehaviour
 
     Text deathText;
     Text pickUpText;
+
+    //HeartBar
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     private void Awake()
     {
@@ -23,6 +29,7 @@ public class Beaver : MonoBehaviour
 
     void Start()
     {
+        numOfHearts = health;
         pickUpText.gameObject.SetActive(false);
         deathText.gameObject.SetActive(false);
     }
@@ -32,6 +39,31 @@ public class Beaver : MonoBehaviour
         Move();
         CheckDeath();
         CheckWin();
+        HealthBar();
+    }
+
+    private void HealthBar()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
     }
 
     private void CheckWin()

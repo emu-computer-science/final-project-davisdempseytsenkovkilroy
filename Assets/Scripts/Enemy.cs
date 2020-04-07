@@ -7,7 +7,10 @@ public class Enemy : MonoBehaviour
     public int damage = 1;
     private Beaver player;
 
-
+    //private void Start()
+    //{
+        //player = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Beaver>(); ;
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,7 +19,6 @@ public class Enemy : MonoBehaviour
             player = collision.gameObject.GetComponent<Beaver>();
             Debug.Log("Collision with player.");
             player.TakeDamage(damage);
-			HeartBar.TakeDamage(damage);
         }
     }
 }

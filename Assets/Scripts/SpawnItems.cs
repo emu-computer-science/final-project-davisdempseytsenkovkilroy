@@ -24,6 +24,12 @@ public class SpawnItems : MonoBehaviour
     public int numChainsaws;
     public GameObject ChainsawPrefab;
 
+    public int numPlants;
+    public GameObject PlantPrefab;
+
+    public int numStumps;
+    public GameObject StumpPrefab;
+
     private List<GameObject> items;
 
     private void Start()
@@ -32,6 +38,8 @@ public class SpawnItems : MonoBehaviour
         Spawn(GasCanPrefab, numGasCans);
         Spawn(ChainsawPrefab, numChainsaws);
         Spawn(RockPrefab, numRocks);
+        Spawn(PlantPrefab, numPlants);
+        Spawn(StumpPrefab, numStumps);
         goal = numGasCans + numChainsaws;
         //totalItems = numGasCans + numChainsaws + numRocks;
     }
@@ -45,6 +53,7 @@ public class SpawnItems : MonoBehaviour
 
         while (counter < numberOfItems)
         {
+            //item = Instantiate<GameObject>(itemPrefab);
             item = Instantiate<GameObject>(itemPrefab);
             Vector2 itemPos = Vector2.zero;
             itemPos.x = Random.Range(itemPosMin.x, itemPosMax.x);
@@ -62,6 +71,7 @@ public class SpawnItems : MonoBehaviour
                         break;
                 }
             }
+
             item.transform.position = itemPos;
             //Instantiate(item, new Vector2(xPos, yPos), Quaternion.identity);
             item.transform.SetParent(anchor.transform);

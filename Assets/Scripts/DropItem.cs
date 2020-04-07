@@ -37,7 +37,7 @@ public class DropItem : MonoBehaviour
             if (Beaver.isCarrying)
             {
                 dropText.gameObject.SetActive(true);
-                dropText.text = "Press X to drop item";
+                dropText.text = "Click the red X to drop item";
                 dropAllowed = true;
             }
         }
