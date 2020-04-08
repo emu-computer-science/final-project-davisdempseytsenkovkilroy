@@ -116,14 +116,14 @@ public class Beaver : MonoBehaviour
         {
             //Debug.Log("Beaver collided with GasCan.");
             pickUpText.gameObject.SetActive(true);
-            pickUpText.text = "Press 'F' to pick Gas Can";
+            //pickUpText.text = "Press 'F' to pick Gas Can";
         }
 
         if (collision.gameObject.tag == "Chainsaw" && isCarrying == false && !inDropZone)
         {
             //Debug.Log("Beaver collided with Chainsaw.");
             pickUpText.gameObject.SetActive(true);
-            pickUpText.text = "Press 'F' to pick Chainsaw";
+            //pickUpText.text = "Press 'F' to pick Chainsaw";
         }
     }
 
