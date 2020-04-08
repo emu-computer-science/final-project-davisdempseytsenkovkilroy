@@ -19,7 +19,7 @@ public class DisplayDied : MonoBehaviour
 
     void Update()
     {
-        health = Beaver.health;
+        health = Beaver.Health;
         if (health < 1)
         {
             deathText.gameObject.SetActive(true);

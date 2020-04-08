@@ -40,6 +40,13 @@ public class PickUp : MonoBehaviour
         {
             AddItem();
         }
+
+        //To be fixed. Destroy item from inventory.
+        /*
+        if (Beaver.inDropZone && Beaver.isCarrying && Input.GetKeyDown(KeyCode.F))
+        {
+            DropItem();
+        }*/
     }
 
     private void AddItem()
@@ -59,4 +66,24 @@ public class PickUp : MonoBehaviour
         }
     }
 
+    /*
+    private void DropItem()
+    {
+        Debug.Log("Dropping game object: " + this.gameObject.name);
+        for (int i = 0; i < inventory.slots.Length; i++)
+        {
+            if (inventory.isFull[i] == true)
+            {
+                inventory.isFull[i] = false;
+                Transform player = GameObject.FindGameObjectWithTag("Beaver").gameObject.transform;
+                Vector2 playerPos = new Vector2(player.position.x, player.position.y - 5);
+                Instantiate(this, playerPos, Quaternion.identity); ;
+                //Destroy(itemButton);
+                isPickable = true;
+                Beaver.isCarrying = false;
+                break;
+            }
+        }
+    }
+    */
 }
