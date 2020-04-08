@@ -58,6 +58,7 @@ public class SpawnItems : MonoBehaviour
             Vector3 itemPos = Vector3.zero;
             itemPos.x = Random.Range(itemPosMin.x, itemPosMax.x);
             itemPos.y = Random.Range(itemPosMin.y, itemPosMax.y);
+            itemPos.z = item.transform.position.z;
             foreach(GameObject o in items)
             {
                 int maxTries = 100;
@@ -71,8 +72,9 @@ public class SpawnItems : MonoBehaviour
                         break;
                 }
             }
-
+            
             item.transform.position = itemPos;
+            
             //Instantiate(item, new Vector2(xPos, yPos), Quaternion.identity);
             item.transform.SetParent(anchor.transform);
             items.Add(item);
