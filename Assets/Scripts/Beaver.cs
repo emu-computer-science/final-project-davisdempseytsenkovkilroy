@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class Beaver : MonoBehaviour
 { 
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] public static int health = 5;
+    [SerializeField] static int health = 5;
     public int numOfHearts;
-    private Rigidbody2D rb;
 
-    public static bool inZone;
+    public static bool inDropZone;
     public static bool isCarrying;
 
+    //Text components
     Text deathText;
     Text pickUpText;
 
@@ -70,9 +70,14 @@ public class Beaver : MonoBehaviour
     {
         if (SpawnItems.goal == Scoreboard.score)
         {
-            deathText.gameObject.SetActive(true);
+            ShowDeathText();
             deathText.text = "You have won.";
         }
+    }
+
+    private void ShowDeathText()
+    {
+        deathText.gameObject.SetActive(true);
     }
 
     public static int Health
@@ -89,7 +94,7 @@ public class Beaver : MonoBehaviour
         {
             //Destroy(gameObject);
             gameObject.SetActive(false);
-            deathText.gameObject.SetActive(true);
+            ShowDeathText();
             //deathText.text = "You have died.";
         }
     }
@@ -107,14 +112,14 @@ public class Beaver : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "GasCan" && isCarrying == false && !inZone)
+        if (collision.gameObject.tag == "GasCan" && isCarrying == false && !inDropZone)
         {
             //Debug.Log("Beaver collided with GasCan.");
             pickUpText.gameObject.SetActive(true);
             pickUpText.text = "Press 'F' to pick Gas Can";
         }
 
-        if (collision.gameObject.tag == "Chainsaw" && isCarrying == false && !inZone)
+        if (collision.gameObject.tag == "Chainsaw" && isCarrying == false && !inDropZone)
         {
             //Debug.Log("Beaver collided with Chainsaw.");
             pickUpText.gameObject.SetActive(true);
@@ -124,11 +129,7 @@ public class Beaver : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "GasCan")
-        {
-            pickUpText.gameObject.SetActive(false);
-        }
-        if (collision.gameObject.tag == "Chainsaw")
+        if (collision.gameObject.tag == "GasCan" || collision.gameObject.tag == "Chainsaw")
         {
             pickUpText.gameObject.SetActive(false);
         }
@@ -145,7 +146,7 @@ public class Beaver : MonoBehaviour
         if (collision.gameObject.tag == "DropZone")
         {
             //Debug.Log("Beaver entered with DropZone.");
-            inZone = true;
+            inDropZone = true;
         }
     }
 
@@ -154,12 +155,12 @@ public class Beaver : MonoBehaviour
         if(collision.gameObject.tag == "DropZone")
         {
             //Debug.Log("Beaver has left the DropZone");
-            inZone = false;
+            inDropZone = false;
         }
     }
 
     public static bool IsInZone()
     {
-        return inZone;
+        return inDropZone;
     }
 }
