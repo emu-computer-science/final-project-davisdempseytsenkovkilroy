@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Beaver : MonoBehaviour
-{ 
-    [SerializeField] float moveSpeed = 10f;
+{
+    public enum State
+    {
+        Idle,
+        Moving,
+        Dying,
+    }
+
+    [SerializeField] float runSpeed = 30f;
     [SerializeField] static int health = 5;
     public int numOfHearts;
 
@@ -21,6 +29,15 @@ public class Beaver : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    //Movement Control
+    Animator animator;
+    SpriteRenderer spriteRenderer;
+    Rigidbody2D rb2d;
+
+    //State Control
+    public State state;
+
+
     private void Awake()
     {
         deathText = GameObject.Find("DeathText").GetComponent<Text>();
@@ -29,6 +46,10 @@ public class Beaver : MonoBehaviour
 
     void Start()
     {
+        state = State.Idle;
+        animator = GetComponent<Animator>();
+        rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         numOfHearts = health;
         pickUpText.gameObject.SetActive(false);
         deathText.gameObject.SetActive(false);
@@ -36,10 +57,90 @@ public class Beaver : MonoBehaviour
 
     public void Update()
     {
-        Move();
-        CheckDeath();
+        Debug.Log("State is:" + state);
+        CheckState();
+        if (state != State.Dying)
+        {
+            Movement();
+        }
+        ChangeSpeed();
+        CheckHealth();
         CheckWin();
         HealthBar();
+    }
+
+    private void CheckState()
+    {
+        switch (state)
+        {
+            case State.Idle:
+                IdleAnimation();
+                break;
+            case State.Moving:
+                animator.Play("beaver_running");
+                break;
+            case State.Dying:
+                //Change later to death picture
+                IdleAnimation();
+                Death();
+                break;
+        }
+    }
+
+    private void IdleAnimation()
+    {
+        animator.Play("beaver_idle");
+    }
+
+    private void CheckHealth()
+    {
+        if (health <= 0)
+        {
+            state = State.Dying;
+        }
+    }
+
+    private void Movement()
+    {
+        //if no key is pressed
+        if (!Input.anyKey)
+        {
+            state = State.Idle;
+        } else
+        {
+            state = State.Moving;
+            if (Input.GetKey("d") || Input.GetKey("right"))
+            {
+                transform.position += transform.right * (Time.deltaTime * runSpeed);
+                spriteRenderer.flipX = true;
+            }
+            if (Input.GetKey("a") || Input.GetKey("left"))
+            {
+                transform.position -= transform.right * (Time.deltaTime * runSpeed);
+                spriteRenderer.flipX = false;
+            }
+            if (Input.GetKey("w") || Input.GetKey("up"))
+            {
+                transform.position += transform.up * (Time.deltaTime * runSpeed);
+            }
+            if (Input.GetKey("s") || Input.GetKey("down"))
+            {
+                transform.position -= transform.up * (Time.deltaTime * runSpeed);
+            }
+        }
+    }
+
+    private void ChangeSpeed()
+    {
+
+        if (isCarrying)
+        {
+            runSpeed = 27f;
+        }
+        else
+        {
+            runSpeed = 30f;
+        }
     }
 
     private void HealthBar()
@@ -88,17 +189,29 @@ public class Beaver : MonoBehaviour
         }
     }
 
-    private void CheckDeath()
+    public void Death()
     {
-        if (health <= 0)
-        {
-            //Destroy(gameObject);
-            gameObject.SetActive(false);
-            ShowDeathText();
-            //deathText.text = "You have died.";
-        }
+        StartCoroutine(displayDiedForSeconds(5));
+    }
+    IEnumerator displayDiedForSeconds(int time)
+    {
+        deathText.gameObject.SetActive(false);
+        ShowDeathText();
+        deathText.text = "You have died.";
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene("Menu");
     }
 
+    IEnumerator displayMainMenu()
+    {
+        deathText.text = "Returning to main screen...";
+        yield return new WaitForSeconds(10);
+        SceneManager.LoadScene("Menu");
+    }
+
+
+    //Old movement method, keeping in case we need to revert back to it.
+    /*
     private void Move()
     {
         float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
@@ -109,27 +222,40 @@ public class Beaver : MonoBehaviour
 
         transform.position = new Vector2(newXpos, newYpos);
     }
+    */
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "GasCan" && isCarrying == false && !inDropZone)
         {
             //Debug.Log("Beaver collided with GasCan.");
-            pickUpText.gameObject.SetActive(true);
+            ShowPickUpText();
             pickUpText.text = "Press 'F' to pick Gas Can";
         }
 
         if (collision.gameObject.tag == "Chainsaw" && isCarrying == false && !inDropZone)
         {
             //Debug.Log("Beaver collided with Chainsaw.");
-            pickUpText.gameObject.SetActive(true);
+            ShowPickUpText();
             pickUpText.text = "Press 'F' to pick Chainsaw";
         }
+
+        if (collision.gameObject.tag == "Axe" && isCarrying == false && !inDropZone)
+        {
+            //Debug.Log("Beaver collided with Chainsaw.");
+            ShowPickUpText();
+            pickUpText.text = "Press 'F' to pick Axe";
+        }
+    }
+
+    private void ShowPickUpText()
+    {
+        pickUpText.gameObject.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "GasCan" || collision.gameObject.tag == "Chainsaw")
+        if (collision.gameObject.tag == "GasCan" || collision.gameObject.tag == "Chainsaw" || collision.gameObject.tag == "Axe")
         {
             pickUpText.gameObject.SetActive(false);
         }

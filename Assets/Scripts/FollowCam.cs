@@ -6,6 +6,7 @@ using System;
 public class FollowCam : MonoBehaviour
 {
     private Func<Vector3> GetCameraFollowPositionFunc;
+    [SerializeField] float cameraFollowSpeed = 4;
 
     public void Setup(Func<Vector3> GetCameraFollowPositionFunc)
     {
@@ -22,7 +23,7 @@ public class FollowCam : MonoBehaviour
 
         if(distance > 0)
         {
-            Vector3 newCameraPosition = transform.position + cameraMoveDirection * distance * cameraMoveSpeed * Time.deltaTime;
+            Vector3 newCameraPosition = transform.position + cameraMoveDirection * distance * cameraMoveSpeed * (Time.deltaTime * cameraFollowSpeed);
 
             float distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
 

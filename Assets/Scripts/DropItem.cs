@@ -71,7 +71,7 @@ public class DropItem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision with " + collision.gameObject.name);
-        if (collision.gameObject.tag == "Chainsaw" || collision.gameObject.tag == "GasCan")
+        if (collision.gameObject.tag == "Chainsaw" || collision.gameObject.tag == "GasCan" || collision.gameObject.tag == "Axe")
         {
             Debug.Log("Collision with " + collision.gameObject.name);
             StartCoroutine(waitAndDestroy(collision.gameObject, 0.1f));

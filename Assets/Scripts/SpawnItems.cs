@@ -18,8 +18,8 @@ public class SpawnItems : MonoBehaviour
     public int numGasCans;
     public GameObject GasCanPrefab;
 
-    public int numRocks;
-    public GameObject RockPrefab;
+    public int numAxes;
+    public GameObject AxePrefab;
 
     public int numChainsaws;
     public GameObject ChainsawPrefab;
@@ -30,6 +30,9 @@ public class SpawnItems : MonoBehaviour
     public int numStumps;
     public GameObject StumpPrefab;
 
+    public int numRocks;
+    public GameObject RockPrefab;
+
     private List<GameObject> items;
 
     private void Start()
@@ -37,6 +40,7 @@ public class SpawnItems : MonoBehaviour
         items = new List<GameObject>();
         Spawn(GasCanPrefab, numGasCans);
         Spawn(ChainsawPrefab, numChainsaws);
+        Spawn(AxePrefab, numAxes);
         Spawn(RockPrefab, numRocks);
         Spawn(PlantPrefab, numPlants);
         Spawn(StumpPrefab, numStumps);

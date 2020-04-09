@@ -13,6 +13,7 @@ TagManager:
   - DropText
   - DeathText
   - Chainsaw
+  - Axe
   layers:
   - Default
   - TransparentFX

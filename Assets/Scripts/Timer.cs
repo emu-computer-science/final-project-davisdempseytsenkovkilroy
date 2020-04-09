@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
 	public float startTime;
 
 	private Text timer;
-	private GameObject beaver;
     private Text textUponTimeEnd;
+
+    private Beaver beaver;
 
     private void Awake()
     {
@@ -19,7 +21,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     beaver = GameObject.FindGameObjectWithTag("Beaver");
+     beaver = GameObject.Find("Beaver").GetComponent<Beaver>();
      timer = GetComponent<Text>();   
     }
 
@@ -35,13 +37,10 @@ public class Timer : MonoBehaviour
         if(startTime < 1)
         {
         	startTime = 0;
-        	//timer.text = "Time Is Up!";
+            //timer.text = "Time Is Up!";
             textUponTimeEnd.gameObject.SetActive(true);
             textUponTimeEnd.text = "You ran out of time.";
-
-            beaver.SetActive(false);
+            beaver.state = Beaver.State.Dying;
         }
-
-        
     }
 }

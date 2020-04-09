@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4762942585431972529}
   - component: {fileID: 7640384008510875369}
   m_Layer: 0
-  m_Name: Chainsaw
-  m_TagString: Chainsaw
+  m_Name: Axe
+  m_TagString: Axe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c65013ae2c3a80844b096952b1175526, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84310c152f0bcbe4f889cbcd7026b354, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: -0.06}
+  m_Offset: {x: 0.01757653, y: 0.03256774}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -107,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.72, y: 0.6}
+  m_Size: {x: 0.5801505, y: 0.7010913}
   m_EdgeRadius: 0
 --- !u!50 &4762942585431972529
 Rigidbody2D:
@@ -142,6 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9211b07b331174c8c192d834443025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemButton: {fileID: 4656856421552268769, guid: 21f612dfffd0bbe41aab9b2d21b098e7,
+  itemButton: {fileID: 4656856421552268769, guid: 84708509bc131624ab25493f729d704d,
     type: 3}
   isPickable: 0
