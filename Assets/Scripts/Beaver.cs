@@ -191,25 +191,25 @@ public class Beaver : MonoBehaviour
 
     public void Death()
     {
-        StartCoroutine(displayDiedForSeconds(5));
-    }
-    IEnumerator displayDiedForSeconds(int time)
-    {
-        deathText.gameObject.SetActive(false);
         ShowDeathText();
-        deathText.text = "You have died.";
-        yield return new WaitForSeconds(time);
-        SceneManager.LoadScene("Menu");
+        Invoke("ReturnToScreenText", 3f);
+        //StartCoroutine(waittwoseconds());
+        //StartCoroutine(displayMainMenu());
     }
-
-    IEnumerator displayMainMenu()
+    private void ReturnToScreenText()
     {
+        Invoke("LoadMainMenu", 2f);
         deathText.text = "Returning to main screen...";
-        yield return new WaitForSeconds(10);
-        SceneManager.LoadScene("Menu");
     }
 
 
+    private void LoadMainMenu()
+    {
+        state = State.Idle;
+        health = 5;
+        //Need to make reset of MainScene
+        SceneManager.LoadScene("Menu");
+    }
     //Old movement method, keeping in case we need to revert back to it.
     /*
     private void Move()
