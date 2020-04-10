@@ -65,6 +65,7 @@ public class SpawnItems : MonoBehaviour
                 Vector3 pos = o.transform.position;
                 while((itemPos - pos).magnitude < distanceBetweenItems)
                 {
+                    Debug.Log("too close");
                     itemPos.x = Random.Range(itemPosMin.x, itemPosMax.x);
                     itemPos.y = Random.Range(itemPosMin.y, itemPosMax.y);
                     maxTries--;
