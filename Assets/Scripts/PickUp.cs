@@ -64,7 +64,22 @@ public class PickUp : MonoBehaviour
                 break;
             }
         }
+
+        
     }
+
+    private void DisplayDropItem()
+    {
+            Beaver.pickUpText.gameObject.SetActive(true);
+            Beaver.pickUpText.text = "Press 'G' to drop item.";
+            Invoke("HidePickUpText", 1f);
+    }
+
+    private void HidePickUpText()
+    {
+        Beaver.pickUpText.gameObject.SetActive(false);
+    }
+
 
     /*
     private void DropItem()

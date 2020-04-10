@@ -8,9 +8,8 @@ public class SpawnItems : MonoBehaviour
     [Header("Set in Inpsector")]
     public Vector2 itemPosMin = new Vector2(-50, -5); 
     public Vector2 itemPosMax = new Vector2(150, 100);
-    private int xPos;
-    private int yPos;
-    private float itemCount = 5f;
+
+
     public static int goal;
 
     public int distanceBetweenItems;
@@ -51,7 +50,8 @@ public class SpawnItems : MonoBehaviour
     void Spawn(GameObject itemPrefab, int numberOfItems)
     {
         GameObject item;
-        GameObject anchor = GameObject.Find("SpawnItems");
+        //GameObject anchor = GameObject.Find("SpawnItems");
+        GameObject anchor = GameObject.FindGameObjectWithTag("InstantiateGame");
         //GasCanPrefab = GameObject.Find("GasCan");
         int counter = 0;
 
@@ -78,8 +78,6 @@ public class SpawnItems : MonoBehaviour
             }
             
             item.transform.position = itemPos;
-            
-            //Instantiate(item, new Vector2(xPos, yPos), Quaternion.identity);
             item.transform.SetParent(anchor.transform);
             items.Add(item);
             counter += 1;

@@ -14,6 +14,7 @@ TagManager:
   - DeathText
   - Chainsaw
   - Axe
+  - InstantiateGame
   layers:
   - Default
   - TransparentFX

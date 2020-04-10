@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2666196764947802889
+--- !u!1 &4685496725494922513
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2666196764947802891}
-  - component: {fileID: 2666196764947802888}
+  - component: {fileID: 4685496725494922519}
+  - component: {fileID: 4685496725494922518}
   m_Layer: 0
   m_Name: SpawnItems
-  m_TagString: Untagged
+  m_TagString: InstantiateGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2666196764947802891
+--- !u!4 &4685496725494922519
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2666196764947802889}
+  m_GameObject: {fileID: 4685496725494922513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,19 +31,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2666196764947802888
+--- !u!114 &4685496725494922518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2666196764947802889}
+  m_GameObject: {fileID: 4685496725494922513}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 169cb7168f196f140add5d41e7bc45ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPosMin: {x: -10, y: -10}
-  itemPosMax: {x: 10, y: 10}
-  numItems: 0
-  GasCanPrefab: {fileID: 0}
+  itemPosMin: {x: -85, y: -120}
+  itemPosMax: {x: 150, y: 120}
+  distanceBetweenItems: 100
+  numGasCans: 3
+  GasCanPrefab: {fileID: 5586794768893756472, guid: d3d556fda4da4f748a5243fca09af687,
+    type: 3}
+  numAxes: 4
+  AxePrefab: {fileID: 2930631039556030807, guid: 1ffae6ef14ac20d4389eec68f1d7f674,
+    type: 3}
+  numChainsaws: 3
+  ChainsawPrefab: {fileID: 2930631039556030807, guid: a414092ddf5d4a34c8191858b4dc4b5f,
+    type: 3}
+  numPlants: 250
+  PlantPrefab: {fileID: 2248618898234640159, guid: 508580713198d924c95434e1337a27e5,
+    type: 3}
+  numStumps: 60
+  StumpPrefab: {fileID: 3527211863696013256, guid: ad3a7ab430d2dd14c83da28d07ca7a86,
+    type: 3}
+  numRocks: 40
+  RockPrefab: {fileID: 3193053662347784523, guid: 83ac47625db8bb546a9e691ebcfe189c,
+    type: 3}

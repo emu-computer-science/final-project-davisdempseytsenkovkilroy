@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DropItem : MonoBehaviour
 {
-    [SerializeField] private Text dropText;
+    [SerializeField] Text pickUpText;
 
     private bool dropAllowed;
     private Transform beaver;
@@ -14,13 +14,9 @@ public class DropItem : MonoBehaviour
 
     private void Awake()
     {
-        dropText = GameObject.Find("DropText").GetComponent<Text>();
+        pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
     }
 
-    private void Start()
-    {
-        dropText.gameObject.SetActive(false);
-    }
     private void Update()
     {
         /*if (Input.GetKeyDown(KeyCode.R) && dropAllowed && Beaver.isCarrying)
@@ -33,11 +29,11 @@ public class DropItem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Beaver")
         {
-            Debug.Log("Dam detected collision with beaver.");
+            //Debug.Log("Dam detected collision with beaver.");
             if (Beaver.isCarrying)
             {
-                dropText.gameObject.SetActive(true);
-                dropText.text = "Click the red X to drop item";
+                pickUpText.gameObject.SetActive(true);
+                pickUpText.text = "Press G to destroy item.";
                 dropAllowed = true;
             }
         }
@@ -62,20 +58,19 @@ public class DropItem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Beaver")
         {
-            Debug.Log("Beaver left Dam.");
-            dropText.gameObject.SetActive(false);
+            //Debug.Log("Beaver left Dam.");
+            pickUpText.gameObject.SetActive(false);
             dropAllowed = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision with " + collision.gameObject.name);
+        //Debug.Log("Collision with " + collision.gameObject.name);
         if (collision.gameObject.tag == "Chainsaw" || collision.gameObject.tag == "GasCan" || collision.gameObject.tag == "Axe")
         {
-            Debug.Log("Collision with " + collision.gameObject.name);
+            //Debug.Log("Collision with " + collision.gameObject.name);
             StartCoroutine(waitAndDestroy(collision.gameObject, 0.1f));
-
         }
     }
 
@@ -91,7 +86,7 @@ public class DropItem : MonoBehaviour
     IEnumerator waitAndDestroy(GameObject item, float seconds)
     {
         Scoreboard.score += 1;
-        dropText.gameObject.SetActive(false);
+        pickUpText.gameObject.SetActive(false);
         yield return new WaitForSeconds(seconds);
         Destroy(item);
         //Debug.Log("After Wait");

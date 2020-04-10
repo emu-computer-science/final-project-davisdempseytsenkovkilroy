@@ -22,7 +22,7 @@ public class Beaver : MonoBehaviour
 
     //Text components
     Text deathText;
-    Text pickUpText;
+    public static Text pickUpText;
 
     //HeartBar
     public Image[] hearts;
@@ -51,13 +51,12 @@ public class Beaver : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         numOfHearts = health;
-        pickUpText.gameObject.SetActive(false);
+        HidePickUpText();
         deathText.gameObject.SetActive(false);
     }
 
     public void Update()
     {
-        Debug.Log("State is:" + state);
         CheckState();
         if (state != State.Dying)
         {
@@ -85,6 +84,11 @@ public class Beaver : MonoBehaviour
                 Death();
                 break;
         }
+    }
+
+    private void HidePickUpText()
+    {
+        pickUpText.gameObject.SetActive(false);
     }
 
     private void IdleAnimation()
@@ -192,6 +196,7 @@ public class Beaver : MonoBehaviour
     public void Death()
     {
         ShowDeathText();
+        isCarrying = false;
         Invoke("ReturnToScreenText", 3f);
         //StartCoroutine(waittwoseconds());
         //StartCoroutine(displayMainMenu());

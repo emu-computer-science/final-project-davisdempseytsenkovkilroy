@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Beaver")
         {
             player = collision.gameObject.GetComponent<Beaver>();
-            Debug.Log("Collision with player.");
+            //Debug.Log("Collision with player.");
             player.TakeDamage(damage);
         }
     }

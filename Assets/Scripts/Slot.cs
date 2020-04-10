@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
@@ -12,9 +13,17 @@ public class Slot : MonoBehaviour
         inventory = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Inventory>();
     }
 
+    //Control for drop
     private void Update()
     {
-        if(transform.childCount <= 0)
+        if (Input.GetKey("g") && Beaver.isCarrying)
+        {
+            DropItem();
+            Beaver.isCarrying = false;
+            
+        }
+
+        if (transform.childCount <= 0)
         {
             inventory.isFull[i] = false;
         }
