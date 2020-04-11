@@ -7179,7 +7179,7 @@ PrefabInstance:
     - target: {fileID: 4685496725494922518, guid: 43c0c3e11730f8947baefd2c3388c8ff,
         type: 3}
       propertyPath: numGasCans
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4685496725494922519, guid: 43c0c3e11730f8947baefd2c3388c8ff,
         type: 3}
