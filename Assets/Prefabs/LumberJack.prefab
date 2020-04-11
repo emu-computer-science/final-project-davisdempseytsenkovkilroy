@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2384305985333171657}
   - component: {fileID: 4121172330503871126}
   m_Layer: 0
-  m_Name: Lumberjack
+  m_Name: LumberJack
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e15c80a9a49640dab74ef5bfd31d85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 29
+  speed: 27
   enemyStop: 3
 --- !u!114 &4121172330503871126
 MonoBehaviour:
@@ -175,3 +175,5 @@ MonoBehaviour:
   AIPath: {fileID: 0}
   moveSpeed: 10
   maxDistanceFromPoint: 0.1
+  speed: 0
+  enemyStop: 0
