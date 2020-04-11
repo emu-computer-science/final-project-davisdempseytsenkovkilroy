@@ -14,8 +14,12 @@ public class EnemyFollowPath : MonoBehaviour
     public float moveSpeed = 1f;
     public float maxDistanceFromPoint = .1f;
 
+    public float speed;
+    public float enemyStop;
+
     private IEnumerator<Transform> pointInThePath;
 
+    private Transform target;
 
     // Start is called before the first frame update
     void Start()
@@ -25,24 +29,37 @@ public class EnemyFollowPath : MonoBehaviour
         pointInThePath.MoveNext();
 
         transform.position = pointInThePath.Current.position;
+
+        target = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (type == MovementTypes.MoveTowards)
+        if (Vector2.Distance(transform.position, target.position) > enemyStop && Beaver.isCarrying)
         {
-            transform.position = Vector3.MoveTowards(transform.position, pointInThePath.Current.position, Time.deltaTime * moveSpeed);
+            // enemy.gameObject.SetActive(false);
+            //transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            moveSpeed = 0;
         }
-        else if (type == MovementTypes.LerpTowards)
+        else
         {
-            transform.position = Vector3.Lerp(transform.position, pointInThePath.Current.position, Time.deltaTime * moveSpeed);
-        }
+            moveSpeed = 10;
+            if (type == MovementTypes.MoveTowards)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, pointInThePath.Current.position, Time.deltaTime * moveSpeed);
+            }
+            else if (type == MovementTypes.LerpTowards)
+            {
+                transform.position = Vector3.Lerp(transform.position, pointInThePath.Current.position, Time.deltaTime * moveSpeed);
+            }
 
-        var dSquared = (transform.position - pointInThePath.Current.position).sqrMagnitude;
-        if (dSquared < maxDistanceFromPoint * maxDistanceFromPoint)
-        {
-            pointInThePath.MoveNext();
+            var dSquared = (transform.position - pointInThePath.Current.position).sqrMagnitude;
+            if (dSquared < maxDistanceFromPoint * maxDistanceFromPoint)
+            {
+                pointInThePath.MoveNext();
+            }
         }
+       
     }
 }

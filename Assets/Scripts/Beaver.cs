@@ -137,7 +137,7 @@ public class Beaver : MonoBehaviour
     private void ChangeSpeed()
     {
 
-        if (isCarrying)
+        if (isCarrying == true)
         {
             runSpeed = 27f;
         }
