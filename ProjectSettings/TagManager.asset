@@ -15,6 +15,7 @@ TagManager:
   - Chainsaw
   - Axe
   - InstantiateGame
+  - EndScene
   layers:
   - Default
   - TransparentFX
