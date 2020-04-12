@@ -56,7 +56,7 @@ public class Beaver : MonoBehaviour
     }
 
     public void Update()
-    {
+    {   
         CheckState();
         if (state != State.Dying)
         {
@@ -213,7 +213,10 @@ public class Beaver : MonoBehaviour
         state = State.Idle;
         health = 5;
         //Need to make reset of MainScene
+        //Scene scene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(scene.name);
         SceneManager.LoadScene("Menu");
+
     }
     //Old movement method, keeping in case we need to revert back to it.
     /*

@@ -12,11 +12,8 @@ GameObject:
   - component: {fileID: 1694622660083366057}
   - component: {fileID: 4997429896443200533}
   - component: {fileID: 3955687046871965321}
-  - component: {fileID: 7718384963190736400}
-  - component: {fileID: 2384305985333171657}
-  - component: {fileID: 4121172330503871126}
   m_Layer: 0
-  m_Name: LumberJack
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,48 +129,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4650426, y: 0.6893183}
   m_EdgeRadius: 0
---- !u!114 &7718384963190736400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694622660083366059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09beae4b269477d4583cd054a90b94b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
---- !u!114 &2384305985333171657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694622660083366059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e15c80a9a49640dab74ef5bfd31d85a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 37
-  enemyStop: 3
---- !u!114 &4121172330503871126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694622660083366059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc16a9ae826ed4c3eab0b4d47fe42111, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  AIPath: {fileID: 0}
-  moveSpeed: 10
-  maxDistanceFromPoint: 0.1
-  speed: 0
-  enemyStop: 0
