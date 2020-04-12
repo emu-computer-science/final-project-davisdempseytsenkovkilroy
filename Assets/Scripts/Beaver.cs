@@ -16,6 +16,7 @@ public class Beaver : MonoBehaviour
     [SerializeField] float runSpeed = 30f;
     [SerializeField] static int health = 5;
     public int numOfHearts;
+    public GameObject endScene;
 
     public static bool inDropZone;
     public static bool isCarrying;
@@ -42,6 +43,7 @@ public class Beaver : MonoBehaviour
     {
         deathText = GameObject.Find("DeathText").GetComponent<Text>();
         pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
+        endScene = GameObject.Find("EndScene");
     }
 
     void Start()
@@ -53,6 +55,7 @@ public class Beaver : MonoBehaviour
         numOfHearts = health;
         HidePickUpText();
         deathText.gameObject.SetActive(false);
+        endScene.gameObject.SetActive(false);
     }
 
     public void Update()
@@ -176,13 +179,15 @@ public class Beaver : MonoBehaviour
         if (SpawnItems.goal == Scoreboard.score)
         {
             ShowDeathText();
-            deathText.text = "You have won.";
+            deathText.text = "You have won!";
+            endScene.SetActive(true);
         }
     }
 
     private void ShowDeathText()
     {
         deathText.gameObject.SetActive(true);
+        endScene.SetActive(true);
     }
 
     public static int Health
