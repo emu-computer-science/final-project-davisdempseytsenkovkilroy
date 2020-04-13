@@ -44,7 +44,7 @@ public class EnemyFollowPath : MonoBehaviour
         }
         else
         {
-            moveSpeed = 10;
+            moveSpeed = 20;
             if (type == MovementTypes.MoveTowards)
             {
                 transform.position = Vector3.MoveTowards(transform.position, pointInThePath.Current.position, Time.deltaTime * moveSpeed);

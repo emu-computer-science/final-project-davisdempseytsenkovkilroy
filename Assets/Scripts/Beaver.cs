@@ -55,7 +55,7 @@ public class Beaver : MonoBehaviour
         numOfHearts = health;
         HidePickUpText();
         deathText.gameObject.SetActive(false);
-        endScene.gameObject.SetActive(false);
+        //endScene.gameObject.SetActive(false);
     }
 
     public void Update()
@@ -142,7 +142,7 @@ public class Beaver : MonoBehaviour
 
         if (isCarrying == true)
         {
-            runSpeed = 27f;
+            runSpeed = 28f;
         }
         else
         {
@@ -180,14 +180,21 @@ public class Beaver : MonoBehaviour
         {
             ShowDeathText();
             deathText.text = "You have won!";
-            endScene.SetActive(true);
+            Invoke("ReturnToScreen", 2f);
+            //endScene.SetActive(true);
+            Scoreboard.score = 0;
         }
     }
 
+    private void HideDeathText()
+    {
+        deathText.gameObject.SetActive(false);
+        //endScene.SetActive(true);
+    }
     private void ShowDeathText()
     {
         deathText.gameObject.SetActive(true);
-        endScene.SetActive(true);
+        //endScene.SetActive(true);
     }
 
     public static int Health
@@ -200,16 +207,18 @@ public class Beaver : MonoBehaviour
 
     public void Death()
     {
+        health = 0;
         ShowDeathText();
         isCarrying = false;
-        Invoke("ReturnToScreenText", 3f);
+        Invoke("ReturnToScreen", 3f);
         //StartCoroutine(waittwoseconds());
         //StartCoroutine(displayMainMenu());
     }
-    private void ReturnToScreenText()
+    public void ReturnToScreen()
     {
-        Invoke("LoadMainMenu", 2f);
-        deathText.text = "Returning to main screen...";
+        Invoke("LoadMainMenu", 3f);
+        ShowPickUpText();
+        pickUpText.text = "Restarting game...";
     }
 
 
@@ -218,9 +227,9 @@ public class Beaver : MonoBehaviour
         state = State.Idle;
         health = 5;
         //Need to make reset of MainScene
-        //Scene scene = SceneManager.GetActiveScene();
-        //SceneManager.LoadScene(scene.name);
-        SceneManager.LoadScene("Menu");
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+        //SceneManager.LoadScene("Menu");
 
     }
     //Old movement method, keeping in case we need to revert back to it.

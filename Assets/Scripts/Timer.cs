@@ -40,7 +40,7 @@ public class Timer : MonoBehaviour
             //timer.text = "Time Is Up!";
             textUponTimeEnd.gameObject.SetActive(true);
             textUponTimeEnd.text = "You ran out of time.";
-            beaver.state = Beaver.State.Dying;
+            beaver.Death();
         }
     }
 }

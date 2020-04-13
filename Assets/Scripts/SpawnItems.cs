@@ -43,7 +43,7 @@ public class SpawnItems : MonoBehaviour
         Spawn(RockPrefab, numRocks);
         Spawn(PlantPrefab, numPlants);
         Spawn(StumpPrefab, numStumps);
-        goal = numGasCans + numChainsaws;
+        goal = numGasCans + numChainsaws+ numAxes;
         //totalItems = numGasCans + numChainsaws + numRocks;
     }
 

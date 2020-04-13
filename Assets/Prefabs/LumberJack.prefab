@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e15c80a9a49640dab74ef5bfd31d85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 37
-  enemyStop: 3
+  speed: 27
+  enemyStop: 0
 --- !u!114 &4121172330503871126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   AIPath: {fileID: 0}
-  moveSpeed: 10
+  moveSpeed: 27
   maxDistanceFromPoint: 0.1
   speed: 0
   enemyStop: 0
