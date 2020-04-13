@@ -23,7 +23,7 @@ public class Spawn : MonoBehaviour
         }
         else
         {
-            playerPos = new Vector2(player.position.x, player.position.y - 5); 
+            playerPos = new Vector2(player.position.x, player.position.y); 
         }
         Instantiate(item, playerPos, Quaternion.identity);
         Beaver.isCarrying = false;
