@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class Scoreboard : MonoBehaviour
 {
-    public static int score = 0;
+    public static int score;
     Text scoreText;
 
     void Start()
     {
+        score = 0;
         scoreText = GetComponent<Text>();
     }
 

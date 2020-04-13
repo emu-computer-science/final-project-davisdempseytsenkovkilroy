@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7718384963190736400}
   - component: {fileID: 2384305985333171657}
   - component: {fileID: 4121172330503871126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LumberJack
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -177,3 +177,4 @@ MonoBehaviour:
   maxDistanceFromPoint: 0.1
   speed: 0
   enemyStop: 0
+  returnToPosSpeed: 15

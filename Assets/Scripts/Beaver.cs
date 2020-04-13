@@ -182,7 +182,6 @@ public class Beaver : MonoBehaviour
             deathText.text = "You have won!";
             Invoke("ReturnToScreen", 2f);
             //endScene.SetActive(true);
-            Scoreboard.score = 0;
         }
     }
 

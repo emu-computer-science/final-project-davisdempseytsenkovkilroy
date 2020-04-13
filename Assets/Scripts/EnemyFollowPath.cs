@@ -16,6 +16,7 @@ public class EnemyFollowPath : MonoBehaviour
 
     public float speed;
     public float enemyStop;
+    public float returnToPosSpeed;
 
     private IEnumerator<Transform> pointInThePath;
 
@@ -44,7 +45,7 @@ public class EnemyFollowPath : MonoBehaviour
         }
         else
         {
-            moveSpeed = 20;
+            moveSpeed = returnToPosSpeed;
             if (type == MovementTypes.MoveTowards)
             {
                 transform.position = Vector3.MoveTowards(transform.position, pointInThePath.Current.position, Time.deltaTime * moveSpeed);
