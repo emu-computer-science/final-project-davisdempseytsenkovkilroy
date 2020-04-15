@@ -46,6 +46,10 @@ public class Beaver : MonoBehaviour
     [SerializeField] GameObject GasCanPrefab;
     [SerializeField] GameObject ChainsawPrefab;
 
+    [SerializeField] GameObject AxeEffect;
+    [SerializeField] GameObject GasCanEffect;
+    [SerializeField] GameObject ChainsawEffect;
+
     public bool firstTimePickUp;
 
     private void Awake()
@@ -53,6 +57,14 @@ public class Beaver : MonoBehaviour
         deathText = GameObject.Find("DeathText").GetComponent<Text>();
         pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
         endScene = GameObject.Find("EndScene");
+
+        AxePrefab = GetComponent<Beaver>().AxePrefab;
+        GasCanPrefab = GetComponent<Beaver>().GasCanPrefab;
+        ChainsawPrefab = GetComponent<Beaver>().ChainsawPrefab;
+
+        AxeEffect = GetComponent<Beaver>().AxeEffect;
+        GasCanEffect = GetComponent<Beaver>().GasCanEffect;
+        ChainsawEffect = GetComponent<Beaver>().ChainsawEffect;
     }
 
     void Start()
@@ -158,8 +170,8 @@ public class Beaver : MonoBehaviour
         if (item != null && !firstTimePickUp)
         {
             ShowPickUpText();
-            pickUpText.text = "Press 'E' to consume item and gain boost";
-            Invoke("HidePickUpText", 5f);
+            pickUpText.text = "Press 'E' to consume item and gain boost or 'F' to drop it";
+            Invoke("HidePickUpText", 10f);
             firstTimePickUp = true;
         }
     }
@@ -177,19 +189,27 @@ public class Beaver : MonoBehaviour
             {
                 itemToSpawn = GasCanPrefab;
                 boostSpeed = 35f;
+                effect = GasCanEffect;
             }
             else if (item.gameObject.tag == "Axe")
             {
                 itemToSpawn = AxePrefab;
                 boostSpeed = 37f;
+                effect = AxeEffect;
             }
             else if (item.gameObject.tag == "Chainsaw")
             {
                 itemToSpawn = ChainsawPrefab;
                 boostSpeed = 40f;
+                effect = ChainsawEffect;
             }
             //Instantiate(itemToSpawn, transform.position, Quaternion.identity);
             //Respawning the item on a random location within the given range.
+
+            GameObject spread = Instantiate(effect, transform.position, Quaternion.identity);
+            Destroy(spread, 3f);        //Destroys the particle prefab, to reduce memory usage
+            effect = null;
+            item = null;
             GameObject.FindGameObjectWithTag("InstantiateGame").GetComponent<SpawnItems>().Spawn(itemToSpawn, 1);
             Destroy(GameObject.FindGameObjectWithTag("Slot").transform.GetChild(0).gameObject);
             isCarrying = false;

@@ -217,6 +217,11 @@ PrefabInstance:
       propertyPath: m_FontData.m_BestFit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2333144417383617283, guid: 02efa29f939cf8845bc94524561c5493,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2333144417383617292, guid: 02efa29f939cf8845bc94524561c5493,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2239,6 +2244,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2930631039556030807, guid: a414092ddf5d4a34c8191858b4dc4b5f,
         type: 3}
+    - target: {fileID: 765462998342181793, guid: 947100d2a786d254aa93e20125930ddc,
+        type: 3}
+      propertyPath: ChainsawEffect
+      value: 
+      objectReference: {fileID: 940524435938165028, guid: 4c622100b38984d44b2dd7bc21a825a0,
+        type: 3}
+    - target: {fileID: 765462998342181793, guid: 947100d2a786d254aa93e20125930ddc,
+        type: 3}
+      propertyPath: GasCanEffect
+      value: 
+      objectReference: {fileID: 940524435938165028, guid: 48b0b6fd12e499d41bf6086b69d60cca,
+        type: 3}
+    - target: {fileID: 765462998342181793, guid: 947100d2a786d254aa93e20125930ddc,
+        type: 3}
+      propertyPath: AxeEffect
+      value: 
+      objectReference: {fileID: 940524435938165028, guid: b0613f431b2c28c458c4c6e4ed21e5c1,
+        type: 3}
     - target: {fileID: 8523575243453997896, guid: 947100d2a786d254aa93e20125930ddc,
         type: 3}
       propertyPath: m_Offset.x
@@ -3680,7 +3703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d7255dff0ce44efa211d4987d21f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 300
+  startTime: 120
 --- !u!114 &1007599001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4447,7 +4470,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Press 'F' to pick Gas Can
 --- !u!222 &1141841419

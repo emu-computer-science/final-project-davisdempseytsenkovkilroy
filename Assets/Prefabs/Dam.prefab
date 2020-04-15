@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a503239ad12b184ca071e40ea0b845d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropText: {fileID: 0}
+  pickUpText: {fileID: 0}

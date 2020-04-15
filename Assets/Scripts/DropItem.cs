@@ -7,7 +7,7 @@ public class DropItem : MonoBehaviour
 {
     [SerializeField] Text pickUpText;
 
-    private bool dropAllowed;
+    //private bool dropAllowed;
     private Transform beaver;
 
     private Slot slot;
@@ -26,7 +26,7 @@ public class DropItem : MonoBehaviour
             {
                 pickUpText.gameObject.SetActive(true);
                 pickUpText.text = "Press F to destroy item.";
-                dropAllowed = true;
+                //dropAllowed = true;
             }
         }
         /*
@@ -52,7 +52,7 @@ public class DropItem : MonoBehaviour
         {
             //Debug.Log("Beaver left Dam.");
             pickUpText.gameObject.SetActive(false);
-            dropAllowed = false;
+            //dropAllowed = false;
         }
     }
 

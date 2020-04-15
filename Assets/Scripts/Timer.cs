@@ -14,9 +14,12 @@ public class Timer : MonoBehaviour
     private Beaver beaver;
     private bool playerHasMoved;
 
+    private Text showGoal;
+
     private void Awake()
     {
         textUponTimeEnd = GameObject.Find("DeathText").GetComponent<Text>();
+        showGoal = GameObject.Find("PickUpText").GetComponent<Text>();
     }
 
     // Start is called before the first frame update
@@ -26,6 +29,9 @@ public class Timer : MonoBehaviour
      timer = GetComponent<Text>();
         timer.text = "Time Remaining: " + (int)startTime;
         playerHasMoved = false;
+        showGoal.gameObject.SetActive(true);
+        showGoal.text = "Collect all items and destroy them at the dam.";
+        
     }
 
     // Update is called once per frame
@@ -34,7 +40,8 @@ public class Timer : MonoBehaviour
         if (Input.anyKey && !playerHasMoved)
         {
             playerHasMoved = true;
-                }
+            showGoal.gameObject.SetActive(false);
+        }
             
             if(playerHasMoved) { 
             if (startTime != 0)
