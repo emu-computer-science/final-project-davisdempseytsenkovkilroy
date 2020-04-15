@@ -38,6 +38,15 @@ public class Beaver : MonoBehaviour
     //State Control
     public State state;
 
+    //Item reference
+    public static GameObject item;
+    public GameObject effect;
+
+    [SerializeField] GameObject AxePrefab;
+    [SerializeField] GameObject GasCanPrefab;
+    [SerializeField] GameObject ChainsawPrefab;
+
+    public bool firstTimePickUp;
 
     private void Awake()
     {
@@ -54,7 +63,8 @@ public class Beaver : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         numOfHearts = health;
         HidePickUpText();
-        deathText.gameObject.SetActive(false);
+        HideDeathText();
+        firstTimePickUp = false;
         //endScene.gameObject.SetActive(false);
     }
 
@@ -69,6 +79,7 @@ public class Beaver : MonoBehaviour
         CheckHealth();
         CheckWin();
         HealthBar();
+        ConsumeItem();
     }
 
     private void CheckState()
@@ -87,6 +98,11 @@ public class Beaver : MonoBehaviour
                 Death();
                 break;
         }
+    }
+
+    public void SetRunSpeed(float speed)
+    {
+        runSpeed = speed;
     }
 
     private void HidePickUpText()
@@ -137,17 +153,71 @@ public class Beaver : MonoBehaviour
         }
     }
 
+    private void FirstTimePromptForConsume()
+    {
+        if (item != null && !firstTimePickUp)
+        {
+            ShowPickUpText();
+            pickUpText.text = "Press 'E' to consume item and gain boost";
+            Invoke("HidePickUpText", 5f);
+            firstTimePickUp = true;
+        }
+    }
+
+    private void ConsumeItem()
+    {
+        FirstTimePromptForConsume();
+        if (item != null && Input.GetKeyDown("e"))
+        {
+            HidePickUpText();
+            GameObject itemToSpawn = null;
+            float boostSpeed = 0f;
+            //Debug.Log("Item is " + item.gameObject.name);
+            if (item.gameObject.tag == "GasCan")
+            {
+                itemToSpawn = GasCanPrefab;
+                boostSpeed = 35f;
+            }
+            else if (item.gameObject.tag == "Axe")
+            {
+                itemToSpawn = AxePrefab;
+                boostSpeed = 37f;
+            }
+            else if (item.gameObject.tag == "Chainsaw")
+            {
+                itemToSpawn = ChainsawPrefab;
+                boostSpeed = 40f;
+            }
+            //Instantiate(itemToSpawn, transform.position, Quaternion.identity);
+            //Respawning the item on a random location within the given range.
+            GameObject.FindGameObjectWithTag("InstantiateGame").GetComponent<SpawnItems>().Spawn(itemToSpawn, 1);
+            Destroy(GameObject.FindGameObjectWithTag("Slot").transform.GetChild(0).gameObject);
+            isCarrying = false;
+            StartCoroutine(getTemporarySpeedBoost(boostSpeed));
+        }
+    }
+
+    IEnumerator getTemporarySpeedBoost(float boostSpeed)
+    {
+        runSpeed = boostSpeed;
+        yield return new WaitForSeconds(3f);
+        runSpeed = 30f;     // returning to default speed after 3 seconds.
+        //Debug.Log("After Wait");
+    }
+
     private void ChangeSpeed()
     {
 
-        if (isCarrying == true)
+        if (isCarrying)
         {
-            runSpeed = 28f;
-        }
-        else
-        {
-            runSpeed = 30f;
-        }
+            //Debug.Log("Item is " + item.gameObject.name);
+            if (item.gameObject.tag == "GasCan")
+                runSpeed = 28f;
+            else if (item.gameObject.tag == "Axe")
+                runSpeed = 27f;
+            else if (item.gameObject.tag == "Chainsaw")
+                runSpeed = 26f;
+        } 
     }
 
     private void HealthBar()
@@ -210,6 +280,7 @@ public class Beaver : MonoBehaviour
         ShowDeathText();
         isCarrying = false;
         Invoke("ReturnToScreen", 3f);
+        item = null;
         //StartCoroutine(waittwoseconds());
         //StartCoroutine(displayMainMenu());
     }
@@ -278,7 +349,7 @@ public class Beaver : MonoBehaviour
     {
         if (collision.gameObject.tag == "GasCan" || collision.gameObject.tag == "Chainsaw" || collision.gameObject.tag == "Axe")
         {
-            pickUpText.gameObject.SetActive(false);
+            HidePickUpText();
         }
     }
 

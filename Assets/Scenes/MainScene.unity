@@ -205,12 +205,17 @@ PrefabInstance:
     - target: {fileID: 2333144417383617283, guid: 02efa29f939cf8845bc94524561c5493,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 30
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 2333144417383617283, guid: 02efa29f939cf8845bc94524561c5493,
         type: 3}
       propertyPath: m_FontData.m_FontStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333144417383617283, guid: 02efa29f939cf8845bc94524561c5493,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2333144417383617292, guid: 02efa29f939cf8845bc94524561c5493,
         type: 3}
@@ -280,7 +285,7 @@ PrefabInstance:
     - target: {fileID: 2333144417383617292, guid: 02efa29f939cf8845bc94524561c5493,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 2333144417383617292, guid: 02efa29f939cf8845bc94524561c5493,
         type: 3}
@@ -1566,7 +1571,7 @@ GameObject:
   - component: {fileID: 485667593}
   m_Layer: 5
   m_Name: Slot (1)
-  m_TagString: Untagged
+  m_TagString: Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1894,6 +1899,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lumberjack (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1694622660083366059, guid: dadb0d55f5e358d47b75b96fc74a60d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4121172330503871126, guid: dadb0d55f5e358d47b75b96fc74a60d8,
         type: 3}
       propertyPath: AIPath
@@ -2211,6 +2221,24 @@ PrefabInstance:
       propertyPath: runSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 765462998342181793, guid: 947100d2a786d254aa93e20125930ddc,
+        type: 3}
+      propertyPath: AxePrefab
+      value: 
+      objectReference: {fileID: 2930631039556030807, guid: 1ffae6ef14ac20d4389eec68f1d7f674,
+        type: 3}
+    - target: {fileID: 765462998342181793, guid: 947100d2a786d254aa93e20125930ddc,
+        type: 3}
+      propertyPath: GasCanPrefab
+      value: 
+      objectReference: {fileID: 5586794768893756472, guid: d3d556fda4da4f748a5243fca09af687,
+        type: 3}
+    - target: {fileID: 765462998342181793, guid: 947100d2a786d254aa93e20125930ddc,
+        type: 3}
+      propertyPath: ChainsawPrefab
+      value: 
+      objectReference: {fileID: 2930631039556030807, guid: a414092ddf5d4a34c8191858b4dc4b5f,
+        type: 3}
     - target: {fileID: 8523575243453997896, guid: 947100d2a786d254aa93e20125930ddc,
         type: 3}
       propertyPath: m_Offset.x
@@ -2534,7 +2562,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -87}
-  m_SizeDelta: {x: 400, y: 60}
+  m_SizeDelta: {x: 600, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &709115144
 PrefabInstance:
@@ -3684,7 +3712,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time Remaining : 0000'
+  m_Text: 'Time Remaining: 000'
 --- !u!222 &1007599002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4410,7 +4438,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 28
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -6722,6 +6750,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lumberjack (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1694622660083366059, guid: dadb0d55f5e358d47b75b96fc74a60d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4121172330503871126, guid: dadb0d55f5e358d47b75b96fc74a60d8,
         type: 3}
       propertyPath: AIPath
@@ -7466,6 +7499,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lumberjack
       objectReference: {fileID: 0}
+    - target: {fileID: 1694622660083366059, guid: dadb0d55f5e358d47b75b96fc74a60d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4121172330503871126, guid: dadb0d55f5e358d47b75b96fc74a60d8,
         type: 3}
       propertyPath: AIPath
@@ -7488,7 +7526,7 @@ PrefabInstance:
     - target: {fileID: 4685496725494922518, guid: 43c0c3e11730f8947baefd2c3388c8ff,
         type: 3}
       propertyPath: numGasCans
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4685496725494922518, guid: 43c0c3e11730f8947baefd2c3388c8ff,
         type: 3}
@@ -7518,7 +7556,7 @@ PrefabInstance:
     - target: {fileID: 4685496725494922518, guid: 43c0c3e11730f8947baefd2c3388c8ff,
         type: 3}
       propertyPath: numChainsaws
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4685496725494922518, guid: 43c0c3e11730f8947baefd2c3388c8ff,
         type: 3}
@@ -7597,12 +7635,12 @@ PrefabInstance:
     - target: {fileID: 1170820263828775881, guid: cfa9142303c7188469906f4a13cfaac6,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.88043976
+      value: -1.3199825
       objectReference: {fileID: 0}
     - target: {fileID: 1170820263828775881, guid: cfa9142303c7188469906f4a13cfaac6,
         type: 3}
       propertyPath: m_Size.y
-      value: 4.288183
+      value: 2.5762806
       objectReference: {fileID: 0}
     - target: {fileID: 1170820263828775881, guid: cfa9142303c7188469906f4a13cfaac6,
         type: 3}

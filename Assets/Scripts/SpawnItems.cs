@@ -47,7 +47,7 @@ public class SpawnItems : MonoBehaviour
         //totalItems = numGasCans + numChainsaws + numRocks;
     }
 
-    void Spawn(GameObject itemPrefab, int numberOfItems)
+    public void Spawn(GameObject itemPrefab, int numberOfItems)
     {
         GameObject item;
         //GameObject anchor = GameObject.Find("SpawnItems");
@@ -65,16 +65,23 @@ public class SpawnItems : MonoBehaviour
             itemPos.z = item.transform.position.z;
             foreach(GameObject o in items)
             {
-                int maxTries = 100;
-                Vector3 pos = o.transform.position;
-                while((itemPos - pos).magnitude < distanceBetweenItems)
+                if (o == null)
                 {
-                    //Debug.Log("too close");
-                    itemPos.x = Random.Range(itemPosMin.x, itemPosMax.x);
-                    itemPos.y = Random.Range(itemPosMin.y, itemPosMax.y);
-                    maxTries--;
-                    if (maxTries == 0)
-                        break;
+                    continue;
+                }
+                else
+                {
+                    int maxTries = 100;
+                    Vector3 pos = o.transform.position;
+                    while ((itemPos - pos).magnitude < distanceBetweenItems)
+                    {
+                        //Debug.Log("too close");
+                        itemPos.x = Random.Range(itemPosMin.x, itemPosMax.x);
+                        itemPos.y = Random.Range(itemPosMin.y, itemPosMax.y);
+                        maxTries--;
+                        if (maxTries == 0)
+                            break;
+                    }
                 }
             }
             

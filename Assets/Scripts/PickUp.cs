@@ -10,9 +10,12 @@ public class PickUp : MonoBehaviour
 
     public bool isPickable;
 
+    public GameObject beaver;
+
     private void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Beaver").GetComponent<Inventory>();
+        beaver = GameObject.FindGameObjectWithTag("Beaver").gameObject;
         isPickable = false;
     }
 
@@ -58,20 +61,19 @@ public class PickUp : MonoBehaviour
             {
                 inventory.isFull[i] = true;
                 Instantiate(itemButton, inventory.slots[i].transform, false);
+                Beaver.item = itemButton.GetComponent<Spawn>().item;
                 Destroy(gameObject);
-                isPickable = false;
+                isPickable = false;                
                 Beaver.isCarrying = true;
                 break;
             }
         }
-
-        
     }
 
     private void DisplayDropItem()
     {
             Beaver.pickUpText.gameObject.SetActive(true);
-            Beaver.pickUpText.text = "Press 'G' to drop item.";
+            Beaver.pickUpText.text = "Press 'F' to drop item.";
             Invoke("HidePickUpText", 1f);
     }
 

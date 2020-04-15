@@ -16,6 +16,7 @@ TagManager:
   - Axe
   - InstantiateGame
   - EndScene
+  - Slot
   layers:
   - Default
   - TransparentFX

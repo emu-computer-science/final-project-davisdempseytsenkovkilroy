@@ -16,11 +16,11 @@ public class Slot : MonoBehaviour
     //Control for drop
     private void Update()
     {
-        if (Input.GetKey("g") && Beaver.isCarrying)
+        if (Input.GetKeyDown("f") && Beaver.isCarrying)
         {
             DropItem();
             Beaver.isCarrying = false;
-            
+            GameObject.FindGameObjectWithTag("Beaver").GetComponent<Beaver>().SetRunSpeed(30f);
         }
 
         if (transform.childCount <= 0)

@@ -177,4 +177,4 @@ MonoBehaviour:
   maxDistanceFromPoint: 0.1
   speed: 0
   enemyStop: 0
-  returnToPosSpeed: 15
+  returnToPosSpeed: 10

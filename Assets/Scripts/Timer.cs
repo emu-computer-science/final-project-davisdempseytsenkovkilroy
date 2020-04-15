@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
     private Text textUponTimeEnd;
 
     private Beaver beaver;
+    private bool playerHasMoved;
 
     private void Awake()
     {
@@ -22,25 +23,34 @@ public class Timer : MonoBehaviour
     void Start()
     {
      beaver = GameObject.Find("Beaver").GetComponent<Beaver>();
-     timer = GetComponent<Text>();   
+     timer = GetComponent<Text>();
+        timer.text = "Time Remaining: " + (int)startTime;
+        playerHasMoved = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(startTime != 0)
+        if (Input.anyKey && !playerHasMoved)
         {
-        startTime -= Time.deltaTime;
-        timer.text = "Time Remaining: " + (int)startTime;
-        }
+            playerHasMoved = true;
+                }
+            
+            if(playerHasMoved) { 
+            if (startTime != 0)
+            {
+                startTime -= Time.deltaTime;
+                timer.text = "Time Remaining: " + (int)startTime;
+            }
 
-        if(startTime < 1)
-        {
-        	startTime = 0;
-            //timer.text = "Time Is Up!";
-            textUponTimeEnd.gameObject.SetActive(true);
-            textUponTimeEnd.text = "You ran out of time.";
-            beaver.Death();
+            if (startTime < 1)
+            {
+                startTime = 0;
+                //timer.text = "Time Is Up!";
+                textUponTimeEnd.gameObject.SetActive(true);
+                textUponTimeEnd.text = "You ran out of time.";
+                beaver.Death();
+            }
         }
     }
 }

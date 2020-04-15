@@ -17,14 +17,6 @@ public class DropItem : MonoBehaviour
         pickUpText = GameObject.Find("PickUpText").GetComponent<Text>();
     }
 
-    private void Update()
-    {
-        /*if (Input.GetKeyDown(KeyCode.R) && dropAllowed && Beaver.isCarrying)
-        {
-            //Drop();
-        }*/
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Beaver")
@@ -33,7 +25,7 @@ public class DropItem : MonoBehaviour
             if (Beaver.isCarrying)
             {
                 pickUpText.gameObject.SetActive(true);
-                pickUpText.text = "Press G to destroy item.";
+                pickUpText.text = "Press F to destroy item.";
                 dropAllowed = true;
             }
         }
