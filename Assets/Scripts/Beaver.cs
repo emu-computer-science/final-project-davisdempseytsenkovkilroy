@@ -170,7 +170,7 @@ public class Beaver : MonoBehaviour
         if (item != null && !firstTimePickUp)
         {
             ShowPickUpText();
-            pickUpText.text = "Press 'E' to consume item and gain boost or 'F' to drop it";
+            pickUpText.text = "You are being chased while holding an item. 'F' to drop or 'E' to consume for speed boost.";
             Invoke("HidePickUpText", 10f);
             firstTimePickUp = true;
         }

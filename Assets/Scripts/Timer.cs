@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour
         timer.text = "Time Remaining: " + (int)startTime;
         playerHasMoved = false;
         showGoal.gameObject.SetActive(true);
-        showGoal.text = "Collect all items and destroy them at the dam.";
+        showGoal.text = "Collect all items and destroy them at the dam before time runs out.";
         
     }
 

@@ -78,6 +78,7 @@ public class DropItem : MonoBehaviour
     IEnumerator waitAndDestroy(GameObject item, float seconds)
     {
         Scoreboard.score += 1;
+        Beaver.item = null;
         pickUpText.gameObject.SetActive(false);
         yield return new WaitForSeconds(seconds);
         Destroy(item);
